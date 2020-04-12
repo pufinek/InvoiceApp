@@ -8,27 +8,27 @@ import TableRow from '@material-ui/core/TableRow';
 import UserForm from './UserForm';
 import { UserContext } from '../UserContext';
 
-import { Employee } from '../commonTypes';
+import { Person } from '../commonTypes';
 
 export default function Users() {
   const { user } = useContext(UserContext);
-  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [employees, setEmployees] = useState<Person[]>([]);
 
-  useEffect(() => {
-    async function getEmployees() {
-      const dbEmployees = await fetch('/api/employees', {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user!.token}`,
-        },
-        method: 'GET',
-      }).then(data => data.json());
+  // useEffect(() => {
+  //   async function getEmployees() {
+  //     const dbEmployees = await fetch('/api/employees', {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         Authorization: `Bearer ${user!.token}`,
+  //       },
+  //       method: 'GET',
+  //     }).then(data => data.json());
 
-      setEmployees(dbEmployees);
-    }
+  //     setEmployees(dbEmployees);
+  //   }
 
-    getEmployees();
-  }, []); // eslint-disable-line
+  //   getEmployees();
+  // }, []); // eslint-disable-line
 
   return (
     <div>
@@ -45,7 +45,7 @@ export default function Users() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {employees.map((employee: Employee) => (
+          {employees.map((employee: Person) => (
             <TableRow key={employee._id}>
               <TableCell>{employee.firstName}</TableCell>
               <TableCell>{employee.lastName}</TableCell>

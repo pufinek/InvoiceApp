@@ -1,9 +1,19 @@
 import { string } from "yup"
 
+
 export interface Employee {
   _id?: string;
   firstName?: string;
   lastName?: string;
+  email?: string;
+}
+
+export interface Person {
+  _id?: string;
+  ico?: string;
+  firstName?: string;
+  lastName?: string;
+  address?: string;
   email?: string;
 }
 
@@ -28,4 +38,15 @@ export interface Hardware {
   dateOfPurchase: Date;
   price: string;
   type: HardwareType;
+}
+
+export interface Invoice {
+  _id?: string;
+  supplier?: Person;
+  supplierId: string;
+  price: number;
+  dateOfInvoice: Date;
+  subscriber?: Person;
+  subscriberId: string;
+  days: number;
 }

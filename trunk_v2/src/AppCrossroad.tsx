@@ -3,12 +3,13 @@ import { Switch, Route } from 'react-router-dom';
 import AppLayout from './components/AppLayout';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
-// import Users from './users/Users';
+import NewInvoicePage from './invoice/NewInvoicePage';
+import Users from './users/Users';
 import logo from './EvHard_logo.png';
 
 // import { PrivateRoute } from './components/PrivateRoute';
 // import NewHwTypeForm from './hardware/NewHwTypeForm';
-import HwListPage from './hardware/HwListPage';
+// import HwListPage from './hardware/HwListPage';
 
 function AppCrossroad() {
   return (
@@ -17,7 +18,6 @@ function AppCrossroad() {
         <AppLayout>
           <React.Fragment>
             Homepage {/** TODO - homepage */}
-            <HwListPage />
           </React.Fragment>
         </AppLayout>
       </Route>
@@ -37,6 +37,28 @@ function AppCrossroad() {
             <img src={logo} alt="logo" />
             <RegisterForm />
           </React.Fragment>
+        </AppLayout>
+      </Route>
+
+      <Route path="/invoice">
+        <AppLayout>
+          <React.Fragment>
+            Přehled faktur
+          </React.Fragment>
+        </AppLayout>
+      </Route>
+
+      <Route path="/new-suppliers">
+        <AppLayout>
+          <React.Fragment>
+            <Users />
+          </React.Fragment>
+        </AppLayout>
+      </Route>
+
+      <Route path="/new-invoice">
+        <AppLayout>
+          <NewInvoicePage />
         </AppLayout>
       </Route>
 

@@ -16,35 +16,35 @@ import { TextField, DatePicker } from 'mui-rff';
 import DateFnsUtils from '@date-io/date-fns';
 import base from '../base';
 
-import { Hardware } from '../commonTypes';
+import { Invoice } from '../commonTypes';
 import { UserContext } from '../UserContext';
-import TypesHardwareSelectField from './TypesHardwareSelectField';
-import NewHwForm from './NewHwForm';
+// import TypesHardwareSelectField from './TypesHardwareSelectField';
+import NewInvoiceForm from './NewInvoiceForm';
 
-function HwListPage() {
+function NewInvoicePage() {
   const { user } = useContext(UserContext);
-  const [hardware, setHardware] = useState<{ data: Hardware[] }>({ data: [] });
+  const [invoices, setInvoices] = useState<{ data: Invoice[] }>({ data: [] });
 
-  const onSubmit = async (values: { data: Hardware[] }) => {
-    console.log(values);
+  // const onSubmit = async (values: { data: Invoice[] }) => {
+  //   console.log(values);
 
-    const deletedItems = differenceBy(hardware.data, values.data, '_id').map(
-      ({ _id }) => _id
-    );
+  //   const deletedItems = differenceBy(invoices.data, values.data, '_id').map(
+  //     ({ _id }) => _id
+  //   );
 
-    if (deletedItems.length) {
-      await fetch(
-        `/api/hardware?ids=${encodeURIComponent(deletedItems.join(','))}`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${user!.token}`,
-          },
-          method: 'DELETE',
-        }
-      );
-    }
-  };
+  //   if (deletedItems.length) {
+  //     await fetch(
+  //       `/api/hardware?ids=${encodeURIComponent(deletedItems.join(','))}`,
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization: `Bearer ${user!.token}`,
+  //         },
+  //         method: 'DELETE',
+  //       }
+  //     );
+  //   }
+  // };
 
   // useEffect(() => {
   //   async function getHardware() {
@@ -85,17 +85,17 @@ function HwListPage() {
 
   return (
     <React.Fragment>
-      <Typography variant="h5">Nové vybavení</Typography>
+      <Typography variant="h5">Vystavení nové faktury</Typography>
       <Grid container justify="center" alignItems="center" spacing={6}>
         <Grid item xs={12}>
-          <NewHwForm
-            onSubmit={(hw: Hardware) =>
-              setHardware({ data: [...hardware.data, hw] })
+          <NewInvoiceForm
+            onSubmit={(invoice: Invoice) =>
+              setInvoices({ data: [...invoices.data, invoice] })
             }
           />
         </Grid>
       </Grid>
-
+{/* 
       <Typography variant="h5">Existující vybavení</Typography>
 
       <Form
@@ -245,9 +245,9 @@ function HwListPage() {
             </form>
           );
         }}
-      />
+      /> */}
     </React.Fragment>
   );
 }
 
-export default HwListPage;
+export default NewInvoicePage;

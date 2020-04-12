@@ -11,6 +11,7 @@ import { string } from 'yup';
 interface SelectFieldProps {
   error?: string | boolean;
   value?: string | number | null;
+  label?: string;
   onChange: (event?: any) => void;
 }
 
@@ -22,7 +23,7 @@ function renderItems(employees: Person[] = []) {
   ));
 }
 
-export default function UserSelectField(props: SelectFieldProps) {
+export default function SupplierSelectField(props: SelectFieldProps) {
   const { user } = useContext(UserContext);
   const [employees, setEmployees] = useState<Person[]>([]);
 
@@ -44,7 +45,7 @@ export default function UserSelectField(props: SelectFieldProps) {
 
   return (
     <FormControl error={!!props.error} fullWidth>
-      <InputLabel>Zaměstnanec</InputLabel>
+      <InputLabel>{props.label}</InputLabel>
       <Select
         name="employeeId"
         value={props.value || -1}

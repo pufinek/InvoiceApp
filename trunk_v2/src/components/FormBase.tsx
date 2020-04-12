@@ -16,7 +16,7 @@ function FormBase(props: FormBaseProps) {
   const { fields, initialValues, validate, onSubmit, titleForm } = props;
 
   return (
-    <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
+    <div style={{ padding: 16, margin: 'auto', maxWidth: 1200 }}>
       <Typography variant="h5" align="center" component="h2" gutterBottom>
         {titleForm}
       </Typography>

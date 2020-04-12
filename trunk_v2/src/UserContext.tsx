@@ -38,28 +38,34 @@ export const UserProvider = withRouter(
     };
 
     useEffect(() => {
-      const token = window.localStorage.getItem('token');
+      //const token = window.localStorage.getItem('token');
 
-      async function getUser() {
-        let res = null;
+      // async function getUser() {
+      //   let res = null;
 
-        try {
-          res = await fetch('/api/users/user', {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-            method: 'GET',
-          }).then(data => data.json());
+      //   try {
+      //     res = await fetch('/api/users/user', {
+      //       headers: {
+      //         'Content-Type': 'application/json',
+      //         Authorization: `Bearer ${token}`,
+      //       },
+      //       method: 'GET',
+      //     }).then(data => data.json());
   
-          if (res.user && res.user.token) {
-            // saveUser(res.user);
-          }
-        } catch (e) {
-          // history.push('/login')
-        }
+      //     if (res.user && res.user.token) {
+      //       // saveUser(res.user);
+      //     }
+      //   } catch (e) {
+      //     // history.push('/login')
+      //   }
 
+      //   setIsLoading(false);
+      // }
+      function getUser() {
         setIsLoading(false);
+        const user = { _id: 44, email: 'JB', token: 'dhbcisub'};
+        saveUser(user)
+        return user
       }
 
       getUser();

@@ -118,26 +118,33 @@ function AppLayout(props: AppLayoutProps) {
         </React.Fragment>
       ) : (
         <List>
-          <ListItem button onClick={() => setRedirect('/hardware-list')}>
+          <ListItem button onClick={() => setRedirect('/new-invoice')}>
+            <ListItemIcon>
+              <AddToQueueOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Nová faktura'} />
+          </ListItem>
+
+          <ListItem button onClick={() => setRedirect('/invoice')}>
             <ListItemIcon>
               <FeaturedPlayListOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary={'Seznam vybavení'} />
+            <ListItemText primary={'Přehled faktury'} />
           </ListItem>
 
-          <ListItem button onClick={() => setRedirect('/users')}>
+          <ListItem button onClick={() => setRedirect('/new-suppliers')}>
             <ListItemIcon>
               <GroupAddIcon />
             </ListItemIcon>
-            <ListItemText primary="Uživatelé" />
+            <ListItemText primary="Nový subjekt" />
           </ListItem>
 
-          <ListItem button onClick={() => setRedirect('/hardware-type')}>
+          {/* <ListItem button onClick={() => setRedirect('/hardware-type')}>
             <ListItemIcon>
               <AddToQueueOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary={'Typy HW'} />
-          </ListItem>
+          </ListItem> */}
         </List>
       )}
       <Divider />

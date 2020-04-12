@@ -6,21 +6,25 @@ import { UserContext } from '../UserContext';
 import FormBase from '../components/FormBase';
 import { required, emailShape } from '../utils/validations';
 
-import { Employee } from '../commonTypes';
+import { Person } from '../commonTypes';
 
 interface UserFormProps {
-  onSubmit: (newUser: Employee) => void;
+  onSubmit: (newUser: Person) => void;
 }
 
 interface FormData {
   firstName?: string;
   lastName?: string;
+  address?: string;
+  ico?: string;
   email?: string;
 }
 
 const initialValues: FormData = {
   firstName: undefined,
   lastName: undefined,
+  address: undefined,
+  ico: undefined,
   email: '@',
 };
 
@@ -37,9 +41,33 @@ const formFields: any[] = [
     size: 12,
     field: (
       <TextField
+        type="text"
+        label="Adresa"
+        name="address"
+        margin="none"
+        required
+      />
+    ),
+  },
+  {
+    size: 6,
+    field: (
+      <TextField
         type="email"
         label="Email"
         name="email"
+        margin="none"
+        required
+      />
+    ),
+  },
+  {
+    size: 6,
+    field: (
+      <TextField
+        type="text"
+        label="IČO"
+        name="ico"
         margin="none"
         required
       />
@@ -52,6 +80,8 @@ const validate = (values: FormData) => {
 
   errors = required(values, errors, 'firstName');
   errors = required(values, errors, 'lastName');
+  errors = required(values, errors, 'address');
+  errors = required(values, errors, 'ico');
   errors = required(values, errors, 'email');
   errors = emailShape(values, errors, 'email');
 
@@ -86,7 +116,7 @@ function UserForm(props: UserFormProps) {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validate={validate}
-      titleForm="Nový uživatel"
+      titleForm="Nový subjekt"
     />
   );
 }
